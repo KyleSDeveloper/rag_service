@@ -130,22 +130,12 @@ flowchart TD
 
   R1 -. on success .-> MREC[Record latency]
   MREC --> R4
-
-  
+ 
   subgraph Build
     C1[corpus txt files] --> IDX
     C2[python -m rag_app.index] --> IDX
   end
-
-  %% Clickable nodes (one per line, no tooltips)
-  click R1 href "#endpoints"
-  click R4 href "#monitoring--metrics"
-  click G  href "#security-api-key--rate-limiting"
-  click IDX href "#data--storage"
-  
 ```
-*Figure — Request path, retrieval, and metrics.*  
-[Endpoints](#endpoints) · [Monitoring & Metrics](#monitoring--metrics) · [Security](#security-api-key--rate-limiting) · [Data & storage](#data--storage) · [Deployment](#deployment-docker--one-click)
 
 ### Components
 - **API layer:** `rag_app/main.py` (FastAPI app, routes, request/response models).
