@@ -127,7 +127,7 @@ flowchart TD
   R1 -. on success .-> MREC[Record latency]
   MREC --> R4
 
-  
+
   subgraph Build
     C1[corpus txt files] --> IDX
     C2[python -m rag_app.index] --> IDX
