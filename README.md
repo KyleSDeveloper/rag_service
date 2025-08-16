@@ -6,6 +6,21 @@
 
 Hybrid retrieval (BM25 baseline today; vectors/reranking optional) with evals, auth, rate limiting, and latency metrics.
 
+## Table of Contents
+- [Acceptance Criteria](#acceptance-criteria-edit-targets-as-needed)
+- [Quickstart](#quickstart)
+- [Endpoints](#endpoints)
+- [Usage (auth required)](#usage-auth-required)
+- [Evaluate](#evaluate)
+- [Benchmarks (local demo)](#benchmarks-local-demo)
+- [Architecture](#architecture)
+- [Deployment (Docker & one-click)](#deployment-docker--one-click)
+- [Monitoring & Metrics](#monitoring--metrics)
+- [Security (API key & rate limiting)](#security-api-key--rate-limiting)
+- [Troubleshooting](#troubleshooting)
+- [Notes](#notes)
+
+
 ## Acceptance Criteria (edit targets as needed)
 - Recall@10 ≥ 0.80; Answer F1 ≥ 0.70 (or EM ≥ 0.60)
 - p95 latency ≤ 800 ms (≥100 queries); p50 ≤ 300 ms
@@ -180,6 +195,12 @@ corpus/
 
 ## Deployment (Docker & one-click)
 
+### One-click (Render)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
+
+> Uses Dockerfile. Set `API_KEY` in Render env vars after deploy.
+
+
 ### Docker (local)
 ```bash
 # build
@@ -303,4 +324,11 @@ curl -s -X POST "$BASE_URL/ask" \
 ## Notes
 - Start with BM25 baseline (rank_bm25), then add vectors + reranker as needed.
 - Consider a small LRU cache for repeated queries and structured logging for observability.
+
+## License
+MIT — see [LICENSE](LICENSE).
+
+## Contact
+Questions? Open an issue or ping me on LinkedIn.
+
 
