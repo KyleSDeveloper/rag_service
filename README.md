@@ -132,11 +132,11 @@ flowchart TD
     C1[corpus txt files] --> IDX
     C2[python -m rag_app.index] --> IDX
   end
-  %% Clickable nodes -> jump to sections below
-  click R1 "#endpoints" "See API endpoints"
-  click R4 "#monitoring--metrics" "See monitoring details"
-  click G  "#security-api-key--rate-limiting" "See auth & rate limits"
-  click IDX "#data--storage" "See data & storage"
+  %% Clickable nodes -> jump to sections below (GitHub requires `href`)
+  click R1 href "#endpoints" "See API endpoints"
+  click R4 href "#monitoring--metrics" "See monitoring details"
+  click G  href "#security-api-key--rate-limiting" "See auth & rate limits"
+  click IDX href "#data--storage" "See data & storage"
 ```
 *Figure — Request path, retrieval, and metrics.*  
 [Endpoints](#endpoints) · [Monitoring & Metrics](#monitoring--metrics) · [Security](#security-api-key--rate-limiting) · [Data & storage](#data--storage) · [Deployment](#deployment-docker--one-click)
