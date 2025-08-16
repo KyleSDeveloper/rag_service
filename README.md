@@ -103,38 +103,38 @@ python -m eval.evaluate --gold ./eval/gold.jsonl --api http://localhost:8010/ask
 
 ```mermaid
 flowchart TD
-    A[Client] -->|HTTP| S[FastAPI Service]
+  A[Client] -->|HTTP| S[FastAPI Service]
 
-    subgraph Routes
-      S --> R1[/POST /ask/]
-      S --> R2[/GET /health/]
-      S --> R3[/GET /version/]
-      S --> R4[/GET /metrics/]
-    end
+  subgraph Routes
+    S --> R1["POST /ask"]
+    S --> R2["GET /health"]
+    S --> R3["GET /version"]
+    S --> R4["GET /metrics"]
+  end
 
-    %% /ask pipeline
-    R1 --> G{API key\nvalid?}
-    G -- No --> E401[401 Unauthorized]
-    G -- Yes --> L{Within\nrate limit?}
-    L -- No --> E429[429 Rate Limited]
-    L -- Yes --> Q[BM25Retriever.query(k)]
+  %% /ask pipeline
+  R1 --> G{API key valid?}
+  G -- No --> E401[401 Unauthorized]
+  G -- Yes --> L{Within rate limit?}
+  L -- No --> E429[429 Rate Limited]
+  L -- Yes --> Q[BM25 query (k)]
 
-    %% Retrieval + scoring
-    Q --> IDX[(rag_app/index.json)]
-    Q --> B[Stopword-aware\nboost scoring]
-    B --> SSEL[Best sentence\nfrom top snippet]
-    SSEL --> CAN[Canonical phrasing\n(if intent matches)]
-    CAN --> RESP[Response: {answer, docs, latency_ms}]
+  %% Retrieval + scoring
+  Q --> IDX[(Index JSON)]
+  Q --> B[Stopword-aware boost]
+  B --> SSEL[Best sentence]
+  SSEL --> CAN[Canonical phrasing]
+  CAN --> RESP[Response {answer, docs, latency_ms}]
 
-    %% Metrics
-    R1 -. on success .-> MREC[Record latency (ms)]
-    MREC --> R4
+  %% Metrics
+  R1 -. on success .-> MREC[Record latency]
+  MREC --> R4
 
-    %% Build artifact
-    subgraph Build
-      C1[corpus/*.txt] --> IDX
-      C2[running: python -m rag_app.index] --> IDX
-    end
+  %% Build artifact
+  subgraph Build
+    C1[corpus/*.txt] --> IDX
+    C2[python -m rag_app.index] --> IDX
+  end
 ```
 
 ### Components
