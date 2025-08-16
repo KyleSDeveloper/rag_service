@@ -15,3 +15,4 @@ corpus/*
 requirements.txt.bak
 *.bak
 rag_app/index.json
+rag_app/index.json
