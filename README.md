@@ -1,4 +1,8 @@
 # Production RAG Service — Starter Kit
+![Python 3.11](https://img.shields.io/badge/Python-3.11-blue)
+![FastAPI](https://img.shields.io/badge/FastAPI-ready-teal)
+![Docker](https://img.shields.io/badge/Docker-ready-informational)
+
 
 Hybrid retrieval (BM25 baseline today; vectors/reranking optional) with evals, auth, rate limiting, and latency metrics.
 
@@ -123,20 +127,21 @@ flowchart TD
   B --> SSEL[Best sentence]
   SSEL --> CAN[Canonical phrasing]
   CAN --> RESP[Response: answer/docs/latency_ms]
-  
+
   R1 -. on success .-> MREC[Record latency]
   MREC --> R4
 
-
+  
   subgraph Build
     C1[corpus txt files] --> IDX
     C2[python -m rag_app.index] --> IDX
   end
-  %% Clickable nodes -> jump to sections below (GitHub requires `href`)
-  click R1 href "#endpoints" "See API endpoints"
-  click R4 href "#monitoring--metrics" "See monitoring details"
-  click G  href "#security-api-key--rate-limiting" "See auth & rate limits"
-  click IDX href "#data--storage" "See data & storage"
+
+  %% Clickable nodes (one per line, no tooltips)
+  click R1 href "#endpoints"
+  click R4 href "#monitoring--metrics"
+  click G  href "#security-api-key--rate-limiting"
+  click IDX href "#data--storage"
 ```
 *Figure — Request path, retrieval, and metrics.*  
 [Endpoints](#endpoints) · [Monitoring & Metrics](#monitoring--metrics) · [Security](#security-api-key--rate-limiting) · [Data & storage](#data--storage) · [Deployment](#deployment-docker--one-click)
