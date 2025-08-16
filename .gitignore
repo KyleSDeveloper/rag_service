@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+*.DS_Store
+logs/
+.uvicorn.pid
+.env
+app/index.json
+app/faiss.index
+app/vec_meta.json

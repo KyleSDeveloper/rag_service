@@ -1,0 +1,24 @@
+from fastapi import FastAPI
+from pydantic import BaseModel
+from time import perf_counter
+
+app = FastAPI(title="RAG Service (Starter)", version="0.1.0")
+
+class AskRequest(BaseModel):
+    question: str
+
+class AskResponse(BaseModel):
+    answer: str
+    latency_ms: float
+
+@app.get("/health")
+def health():
+    return {"ok": True}
+
+@app.post("/ask", response_model=AskResponse)
+def ask(req: AskRequest):
+    # TODO: wire up retrieval (BM25 + vectors) and reranker
+    start = perf_counter()
+    answer = "Not implemented yet."
+    latency_ms = (perf_counter() - start) * 1000.0
+    return AskResponse(answer=answer, latency_ms=latency_ms)
