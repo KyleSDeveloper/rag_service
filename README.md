@@ -142,6 +142,7 @@ flowchart TD
   click R4 href "#monitoring--metrics"
   click G  href "#security-api-key--rate-limiting"
   click IDX href "#data--storage"
+  
 ```
 *Figure — Request path, retrieval, and metrics.*  
 [Endpoints](#endpoints) · [Monitoring & Metrics](#monitoring--metrics) · [Security](#security-api-key--rate-limiting) · [Data & storage](#data--storage) · [Deployment](#deployment-docker--one-click)
