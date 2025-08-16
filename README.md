@@ -111,28 +111,25 @@ flowchart TD
     S --> R3["GET /version"]
     S --> R4["GET /metrics"]
   end
-
-  %% /ask pipeline
+  
   R1 --> G{API key valid?}
   G -- No --> E401[401 Unauthorized]
   G -- Yes --> L{Within rate limit?}
   L -- No --> E429[429 Rate Limited]
-  L -- Yes --> Q[BM25 query (k)]
+  L -- Yes --> Q[BM25 query k]
 
-  %% Retrieval + scoring
-  Q --> IDX[(Index JSON)]
+  Q --> IDX[Index JSON]
   Q --> B[Stopword-aware boost]
   B --> SSEL[Best sentence]
   SSEL --> CAN[Canonical phrasing]
-  CAN --> RESP[Response {answer, docs, latency_ms}]
-
-  %% Metrics
+  CAN --> RESP[Response: answer/docs/latency_ms]
+  
   R1 -. on success .-> MREC[Record latency]
   MREC --> R4
 
-  %% Build artifact
+  
   subgraph Build
-    C1[corpus/*.txt] --> IDX
+    C1[corpus txt files] --> IDX
     C2[python -m rag_app.index] --> IDX
   end
 ```
