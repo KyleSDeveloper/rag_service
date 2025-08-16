@@ -34,13 +34,15 @@ Place 50 Q/A pairs in `eval/gold.jsonl`:
 Then implement `eval/evaluate.py` to compute Recall@k/MRR/answer F1.
 
 ## Benchmarks (fill these)
-| Metric | Value |
-|---|---|
-| Recall@10 |  |
-| Answer F1 |  |
-| p95 latency |  |
-| Cost / 1k queries |  |
-| Cache hit‑rate |  |
+<!-- METRICS:BEGIN -->
+| Metric      | Value            |
+|-------------|------------------|
+| Answer F1   | 1.00 (toy)       |
+| Recall@10   | 1.00 (toy)       |
+| p50 latency | 0.199 ms (local) |
+| p95 latency | 0.355 ms (local) |
+<!-- METRICS:END -->
+
 
 ## Notes
 - Start with BM25 baseline (rank_bm25) + sentence embeddings (sentence-transformers) + reranker (optional).

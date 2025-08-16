@@ -24,13 +24,13 @@ PY
 
 # Build indexes at image build time (optional but nice for demo images)
 # If corpus changes at runtime you can rebuild with the Make targets instead.
-RUN python -m app.index --corpus ./corpus --out ./app/index.json || true
-RUN python -m app.vector_index --index_json ./app/index.json --out_index ./app/faiss.index --out_meta ./app/vec_meta.json || true
+RUN python -m rag_app.index --corpus ./corpus --out ./rag_app/index.json || true
+RUN python -m rag_app.vector_index --index_json ./rag_app/index.json --out_index ./app/faiss.index --out_meta ./app/vec_meta.json || true
 
 # 8000 is conventional for containerized FastAPI
 ENV PORT=8000
 EXPOSE 8000
 
 # Health-friendly startup
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "rag_app.main:app", "--host", "0.0.0.0", "--port", "8000"]
 

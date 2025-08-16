@@ -2,10 +2,10 @@
 .PHONY: run index evaluate eval
 
 run:
-> uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+> uvicorn rag_app.main:app --host 0.0.0.0 --port 8000 --reload
 
 index:
-> python -m app.index --corpus ./corpus --out ./app/index.json
+> python -m rag_app.index --corpus ./corpus --out ./rag_app/index.json
 
 # alias
 eval: evaluate
