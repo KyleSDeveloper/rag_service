@@ -10,3 +10,7 @@ rag_app/index.json
 corpus/*
 !corpus/sample.txt
 
+
+# backups
+requirements.txt.bak
+*.bak
