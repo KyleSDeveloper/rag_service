@@ -8,3 +8,4 @@ logs/
 app/index.json
 app/faiss.index
 app/vec_meta.json
+rag_app/index.json
