@@ -14,3 +14,4 @@ corpus/*
 # backups
 requirements.txt.bak
 *.bak
+rag_app/index.json
