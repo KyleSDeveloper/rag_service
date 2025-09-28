@@ -4,7 +4,7 @@
 ![Docker](https://img.shields.io/badge/Docker-ready-informational)
 [![CI](https://github.com/KyleSDeveloper/rag_service/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/KyleSDeveloper/rag_service/actions/workflows/ci.yml)
 
-Hybrid retrieval (BM25 baseline today; vectors/reranking optional) with evals, auth, rate limiting, and latency metrics.
+BM25 retrieval service with a prebuilt JSON index, FastAPI endpoints, and basic latency metrics. Dev API key guard; no vectors, reranking, eval suite, or rate limiting (yet).
 
 ## Table of Contents
 - [Acceptance Criteria](#acceptance-criteria-edit-targets-as-needed)
